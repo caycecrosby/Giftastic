@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Aguafina+Script|Bilbo|Bungee+Inline|Knewave|Rammetto+One|Sofia" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel ="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <title>Document</title>
+    
+</head>
+
+<body>
+    <div class="container firstrow bigbox">
+        <div class="row row1">
+            <div id="header" class="col-md-12 col-sm-12 col-lg-12">
+                <center>
+                    <h1 class="titleHead">Hypnotized </h1>
+                    <h2 class="scripts"> What better way to waste your day than watch my Gifs! In place you'll Stay!</h2>
+				<div id="btns-view" class="col-md-12 col-sm-12 col-lg-12">
+				</div>
+                    <form id="gif-form">
+                        <label for="gif-input">So you Gif?</label>
+                        <input type="text" id="gif-input">
+                        <!-- Button triggers new movie to be added -->
+                        <input id="add-gif" type="submit" class="gifButton" value="Get Giffy With It!">
+                    </form>
+                </center>
+            </div>
+        </div>
+       
+        <div class="row row2">
+            <div id="gif-view" class="col-lg-12 col-md-12 col-sm-12">
+            </div>
+        </div>
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript"></script>
+<script>
+var gifArray = ["Rick and Morty", "Family Guy", "Archer"];
+
+
+$('#btns-view').on('click', '#gifButton', function() {
+    console.log(this.name);
+    gif = this.name
+    console.log(gif)
+    makeGif(gif);
+});
+
+
+// Dynamically Makes Buttons
+
+function makeBtns() {
+
+    $("#btns-view").empty();
+
+    for (var i = 0; i < gifArray.length; i++) {
+
+        //create button dynamically
+
+        var a = $("<button>");
+        a.addClass("createdBtn");
+        a.attr("name", gifArray[i]);
+        a.text(gifArray[i]);
+        a.attr("id", "gifButton");
+        $("#btns-view").append(a);
+
+    }
+
+}
+
+
+function makeGif(gifName) {
+    var queryURL = "https://api.giphy.com/v1/gifs/search?q=" +
+        gifName + "&api_key=dc6zaTOxFJmzC&limit=1";
+
+    console.log(queryURL)
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+    }).done(function(response) {
+        for (var i = 0; i < response.data.length; i++) {
+            console.log("correct url", response.data[i].images.downsized_medium.url)
+            var imageUrl = response.data[i].images.downsized_medium.url;
+            console.log("this is the giffy url", imageUrl)
+            var gifImage = $("<img>");
+            gifImage.attr("src", imageUrl);
+            console.log(gifImage)
+            $("#gif-view").append(gifImage);
+        }
+    });
+}
+
+// button command for making buttons and pushing array 
+
+$("#add-gif").on("click", function(event) {
+    event.preventDefault();
+    var gif = $("#gif-input").val().trim();
+    gifArray.push(gif);
+    console.log($("#gif-input").val().trim());
+    // console.log(gifArray)
+
+    makeBtns();
+    makeGif($("#gif-input").val().trim());
+});
+
+makeBtns();
+</script>
+</body>
+
+</html>

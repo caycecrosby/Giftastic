@@ -1,0 +1,60 @@
+
+
+    button {
+        color: black;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+    }
+
+
+    body {
+        background-color: black;
+        background-size: 100% 100%;
+    }
+
+    .bigbox {
+
+		color: white;
+        background-image: url("../images/hypnogif.gif");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        background-position: center;
+        background-attachment:fixed;
+        font-family: 'Bilbo', cursive;
+    }
+
+    .row1{
+    	
+    	height:300px;
+    	width:100%;
+
+    }
+
+
+    .firstrow{
+    	
+    	height:900px;
+    	width:100%;
+
+    }
+
+    #gif-form, #add-gif{
+    	font-size: 16px;
+    }
+
+    #add-gif{
+    	color:black;
+    }
+
+     .titleHead{
+    	font-size: 50px;
+    }
+
+    .scripts{
+    	font-size: 35px;
+    }
+
+
