@@ -12,17 +12,18 @@
 
     body {
         background-color: black;
-        background-size: 100% 100%;
+        background-size: 100%;
+        background-image: url("../images/hypnogif.gif");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-attachment: fixed;
     }
 
     .bigbox {
 
 		color: white;
-        background-image: url("../images/hypnogif.gif");
         background-repeat: no-repeat;
-        background-size: 100% 100%;
-        background-position: center;
-        background-attachment:fixed;
+        background-size: 100%;
         font-family: 'Bilbo', cursive;
     }
 
