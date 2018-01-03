@@ -43,7 +43,8 @@
     }
 
     #gif-form, #add-gif{
-    	font-size: 16px;
+    	font-size: 25px;
+        color:black;
     }
 
     #add-gif{
